@@ -25,7 +25,7 @@ public class BombasdeCombustivel {
     public BombasdeCombustivel() {
     }
 
-    public BombasdeCombustivel(UUID id, Integer numerodabomba, String combustivel, TiposCombustivel tiposCombustivel) {
+    public BombasdeCombustivel(UUID id, Integer numerodabomba, TiposCombustivel tiposCombustivel) {
         this.id = id;
         this.numerodabomba = numerodabomba;
         this.tiposCombustivel = tiposCombustivel;
