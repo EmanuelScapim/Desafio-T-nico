@@ -2,6 +2,8 @@ package io.github.emanuelscapim.desafiotecnico.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -13,6 +15,9 @@ public class TiposCombustivel {
     private UUID id;
     private String nome;
     private Double preco;
+
+    @OneToMany(mappedBy = "tiposCombustivel")
+    Set<BombasdeCombustivel> bombasdeCombustivels = new HashSet<>();
 
     public TiposCombustivel() {
     }

@@ -2,6 +2,8 @@ package io.github.emanuelscapim.desafiotecnico.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -12,15 +14,21 @@ public class BombasdeCombustivel {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private Integer numerodabomba;
-    private String combustivel;
+
+    @ManyToOne
+    @JoinColumn(name = "combustivel_id")
+    TiposCombustivel tiposCombustivel;
+
+    @OneToMany(mappedBy = "bomba")
+    Set<Abastecimentos> abastecimentos = new HashSet<>();
 
     public BombasdeCombustivel() {
     }
 
-    public BombasdeCombustivel(UUID id, Integer numerodabomba, String combustivel) {
+    public BombasdeCombustivel(UUID id, Integer numerodabomba, String combustivel, TiposCombustivel tiposCombustivel) {
         this.id = id;
         this.numerodabomba = numerodabomba;
-        this.combustivel = combustivel;
+        this.tiposCombustivel = tiposCombustivel;
     }
 
     public UUID getId() {
@@ -39,11 +47,11 @@ public class BombasdeCombustivel {
         this.numerodabomba = numerodabomba;
     }
 
-    public String getCombustivel() {
-        return combustivel;
+    public TiposCombustivel getTiposCombustivel() {
+        return tiposCombustivel;
     }
 
-    public void setCombustivel(String combustivel) {
-        this.combustivel = combustivel;
+    public void setTiposCombustivel(TiposCombustivel tiposCombustivel) {
+        this.tiposCombustivel = tiposCombustivel;
     }
 }
