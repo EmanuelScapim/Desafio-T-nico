@@ -68,4 +68,12 @@ public class Abastecimentos {
     public void somaValor(){
        this.valorTotal = litragem * bomba.getTiposCombustivel().getPreco();
     }
+
+    public BombasdeCombustivel getBomba() {
+        return bomba;
+    }
+
+    public void setBomba(BombasdeCombustivel bomba) {
+        this.bomba = bomba;
+    }
 }
