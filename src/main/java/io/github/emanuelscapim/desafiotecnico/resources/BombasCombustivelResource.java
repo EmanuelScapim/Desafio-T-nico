@@ -6,9 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("bombas")
+@RequestMapping("bomba")
 public class BombasCombustivelResource {
 
     BombasCombustivelService service;
@@ -26,7 +27,16 @@ public class BombasCombustivelResource {
     @GetMapping
     public ResponseEntity<List<BombasdeCombustivel>> findAll(){
          List<BombasdeCombustivel> list = service.findAll();
-
          return ResponseEntity.ok().body(list);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable UUID id){
+        service.delete(id);
+    }
+
+    @PutMapping("{id}")
+    public void atualizar(@RequestBody BombasdeCombustivel bomba, @PathVariable UUID id){
+        service.atualizar(id, bomba);
     }
 }
